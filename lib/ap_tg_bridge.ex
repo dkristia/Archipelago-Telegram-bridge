@@ -17,8 +17,6 @@ defmodule ApTgBridge do
   end
 
   def run do
-    bot_token = System.get_env("TOKEN")
-    IO.puts(bot_token)
     IO.puts("Hello, world!")
   end
 end
