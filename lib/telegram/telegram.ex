@@ -31,7 +31,7 @@ defmodule Telegram do
         chat = update.edited_message.chat.id
 
         if String.starts_with?(message.text, "/connect") do
-          url = String.trim(String.replace_prefix(message.text, "/connect ", ""))
+          url = String.trim(String.replace_prefix(message.text, "/connect", ""))
 
           Nadia.send_message(chat, "Connecting to #{url}", [
             {:reply_to_message_id, message.message_id}
