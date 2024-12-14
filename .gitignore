@@ -24,3 +24,5 @@ ap_tg_bridge-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
+
+TOKEN
