@@ -1,8 +1,9 @@
 defmodule Archipelago do
   def start(url) do
     initial_state = %{}
-    {:ok, pid} = WSClient.connect(url, initial_state)
-    pid
+    # {:ok, pid} = WSClient.connect(url, initial_state)
+    # pid
+    WSClient.connect(url, initial_state)
   end
 
   def send_message(pid, msg) do
@@ -28,7 +29,7 @@ defmodule Archipelago do
 
     Task.start(fn ->
       send_message(pid, Jason.encode!([payload]))
-      #send_message(pid, Jason.encode!(%{cmd: "Get", keys: ["_read_race_mode"]}))
+      # send_message(pid, Jason.encode!(%{cmd: "Get", keys: ["_read_race_mode"]}))
     end)
   end
 end
