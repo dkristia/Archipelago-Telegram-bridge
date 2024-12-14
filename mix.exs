@@ -24,7 +24,8 @@ defmodule ApTgBridge.MixProject do
     [
       {:nadia, "~> 0.7.0"},
       {:websockex, "~> 0.4.3"},
-      {:jason, "~> 1.4.4"}
+      {:jason, "~> 1.4.4"},
+      {:uuid, "~> 1.1.0"}
     ]
   end
 end

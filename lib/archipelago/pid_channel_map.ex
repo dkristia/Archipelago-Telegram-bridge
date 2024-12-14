@@ -16,4 +16,8 @@ defmodule PidChannelMap do
   def get(pid) do
     Agent.get(__MODULE__, fn map -> Map.get(map, pid) end)
   end
+
+  def get_pid(channel) do
+    Agent.get(__MODULE__, fn map -> Map.get_key(map, channel) end)
+  end
 end

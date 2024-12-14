@@ -18,8 +18,16 @@ defmodule ApTgBridge do
 
   def run do
     PidChannelMap.start_link()
-    pid = Archipelago.start("archipelago.gg:38453")
-    Archipelago.send_message(pid, "Hello, world!")
-    Telegram.loop(0)
+    pid = Archipelago.start("wss://archipelago.gg:38453")
+    Archipelago.send_connect(pid, %{
+      password: "pvl",
+      version: "1.0.0",
+      tags: [],
+      items_handling: nil,
+      uuid: UUID.uuid4(),
+      game: "Pokemon Emerald",
+      slot_data: false
+    })
+    #Telegram.loop(0)
   end
 end
