@@ -23,7 +23,7 @@ defmodule Telegram do
             {:reply_to_message_id, message.message_id}
           ])
 
-          connect(url)
+          connect(url, chat)
         end
 
       !is_nil(update.edited_message) ->
@@ -37,7 +37,7 @@ defmodule Telegram do
             {:reply_to_message_id, message.message_id}
           ])
 
-          connect(url)
+          connect(url, chat)
         end
 
       true ->
@@ -47,7 +47,7 @@ defmodule Telegram do
     update.update_id + 1
   end
 
-  def connect(url) do
+  def connect(url, chat) do
     IO.puts(url)
   end
 
