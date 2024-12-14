@@ -13,17 +13,32 @@ defmodule Telegram do
   def process_update(update) do
     cond do
       !is_nil(update.message) ->
-        text = update.message.text
+        message = update.message
+        chat = update.message.chat.id
 
-        if String.starts_with?(text, "/connect") do
-          connect(String.replace_prefix(text, "/connect ", ""))
+        if String.starts_with?(message.text, "/connect") do
+          url = String.trim(String.replace_prefix(message.text, "/connect", ""))
+
+          Nadia.send_message(chat, "Connecting to #{url}", [
+            {:reply_to_message_id, message.message_id}
+          ])
+
+          connect(url)
         end
 
-        IO.puts(text)
+      !is_nil(update.edited_message) ->
+        message = update.edited_message
+        chat = update.edited_message.chat.id
 
-        Nadia.send_message(update.message.chat.id, update.message.text, [
-          {:reply_to_message_id, update.message.message_id}
-        ])
+        if String.starts_with?(message.text, "/connect") do
+          url = String.trim(String.replace_prefix(message.text, "/connect ", ""))
+
+          Nadia.send_message(chat, "Connecting to #{url}", [
+            {:reply_to_message_id, message.message_id}
+          ])
+
+          connect(url)
+        end
 
       true ->
         nil
