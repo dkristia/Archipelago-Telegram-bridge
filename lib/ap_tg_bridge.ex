@@ -17,7 +17,8 @@ defmodule ApTgBridge do
   end
 
   def run do
-    pid = Archipelago.start()
+    PidChannelMap.start_link()
+    pid = Archipelago.start("archipelago.gg:38453")
     Archipelago.send_message(pid, "Hello, world!")
     Telegram.loop(0)
   end

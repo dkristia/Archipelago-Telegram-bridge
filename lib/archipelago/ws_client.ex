@@ -1,9 +1,8 @@
 defmodule WSClient do
   use WebSockex
 
-  @archipelagoUrl "wss://echo.websocket.org" #System.get_env("ARCHIPELAGO_URL")
-  def connect(state) do
-    WebSockex.start_link(@archipelagoUrl, __MODULE__, state)
+  def connect(url, state) do
+    WebSockex.start_link(url, __MODULE__, state)
   end
 
   def handle_frame({:text, msg}, state) do
